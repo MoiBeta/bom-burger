@@ -12,7 +12,7 @@ final Provider<GoRouter> router = Provider<GoRouter>(
       GoRoute(
         path: home,
         builder: (BuildContext context, GoRouterState state) {
-          return const HomeScreen();
+          return HomeScreen();
         },
       ),
     ],
