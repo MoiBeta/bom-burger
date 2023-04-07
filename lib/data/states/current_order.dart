@@ -26,4 +26,6 @@ class CurrentOrderNotifier extends StateNotifier<Order?>{
     log('Item received: $item, Items: ${state?.items}');
   }
 
+  void removeItem(Item currentItem) {}
+
 }

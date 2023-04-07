@@ -59,7 +59,7 @@ class OrderRepository {
               name: 'Fries',
               price: 2.0,
               type: ItemType.fries,
-              imageUrl: 'https://firebasestorage.googleapis.com/v0/b/equipo1proyecto-98cd8.appspot.com/o/burger.png?alt=media&token=e4bbd0f3-5d89-4b3c-8857-4363bb7f9424',
+              imageUrl: 'https://firebasestorage.googleapis.com/v0/b/equipo1proyecto-98cd8.appspot.com/o/fries.png?alt=media&token=d2b78eae-4cb7-45ca-a35c-df49055d1ba0',
             rate: 5,
           ),
           Item(
@@ -67,7 +67,7 @@ class OrderRepository {
               name: 'Soft Drink',
               price: 2.5,
               type: ItemType.softDrink,
-              imageUrl: 'https://firebasestorage.googleapis.com/v0/b/equipo1proyecto-98cd8.appspot.com/o/burger.png?alt=media&token=e4bbd0f3-5d89-4b3c-8857-4363bb7f9424',
+              imageUrl: 'https://firebasestorage.googleapis.com/v0/b/equipo1proyecto-98cd8.appspot.com/o/soft_drink.png?alt=media&token=c1be35ba-4f70-4709-9f7d-fbe99ce36b5d',
             rate: 4.5,
           ),
         ],

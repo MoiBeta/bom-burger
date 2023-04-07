@@ -22,7 +22,7 @@ class SandwichItemList extends ConsumerWidget {
         .watch(currentOrderProvider)
         ?.items
         .where((Item item) => item.id == currentItem.id)
-        .length;
+        .length ?? 0;
     return Container(
       margin: const EdgeInsets.all(5),
       child: Material(
@@ -34,72 +34,83 @@ class SandwichItemList extends ConsumerWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
           ),
-          child: badges.Badge(
-            showBadge: count != null && count > 0,
-            badgeContent: Text(count.toString()),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Flexible(
-                    child: Center(
-                        child: Image.network(
-                            currentItem.imageUrl,
-                          loadingBuilder: (BuildContext context, Widget child,
-                              ImageChunkEvent? loadingProgress)
-                          => loadingProgress != null
-                              ? const CircularProgressIndicator():child,
-                        ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Flexible(
+                  child: Center(
+                      child: Image.network(
+                          currentItem.imageUrl,
+                        loadingBuilder: (BuildContext context, Widget child,
+                            ImageChunkEvent? loadingProgress)
+                        => loadingProgress != null
+                            ? const CircularProgressIndicator():child,
+                      ),
+                  ),
+              ),
+              Flexible(
+                flex: 0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                        '\$${currentItem.price}',
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
-                ),
-                Flexible(
-                  flex: 0,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(currentItem.name),
-                      Row(
-                        children: <Widget>[
-                          Flexible(
-                            flex: 3,
-                            child: FittedBox(
-                              child: RatingBarIndicator(
-                                rating: currentItem.rate,
-                                itemBuilder: (BuildContext context, _) => const Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
-                                ),
+                    Text(currentItem.name),
+                    Row(
+                      children: <Widget>[
+                        Flexible(
+                          flex: 3,
+                          child: FittedBox(
+                            child: RatingBarIndicator(
+                              rating: currentItem.rate,
+                              itemBuilder: (BuildContext context, _) => const Icon(
+                                Icons.star,
+                                color: Colors.amber,
                               ),
                             ),
                           ),
-                          const Flexible(
-                            flex: 2,
-                            child: SizedBox(),
+                        ),
+                        const Flexible(
+                          flex: 2,
+                          child: SizedBox(),
+                        ),
+                      ],
+                    ),
+                    const Divider(),
+                    SizedBox(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          FloatingActionButton(
+                            mini: true,
+                            child: const Icon(Icons.remove),
+                            onPressed: (){
+                              ref.read(currentOrderProvider.notifier)
+                                  .removeItem(currentItem);
+                            },
+                          ),
+                          Text(
+                              (count).toString(),
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                          FloatingActionButton(
+                            mini: true,
+                            child: const Icon(Icons.add),
+                            onPressed: (){
+                              ref.read(currentOrderProvider.notifier)
+                                  .addItem(currentItem);
+                            },
                           ),
                         ],
                       ),
-                      const Divider(),
-                      SizedBox(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text('\$${currentItem.price}'),
-                            FloatingActionButton(
-                              mini: true,
-                              child: const Icon(Icons.add),
-                              onPressed: (){
-                                ref.read(currentOrderProvider.notifier)
-                                    .addItem(currentItem);
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
