@@ -19,5 +19,13 @@ ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.bold,
     ),
   ),
-
+  progressIndicatorTheme: const ProgressIndicatorThemeData(
+    color: Color(0xFFFFA000),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color(0xFFFFA000),
+      disabledBackgroundColor: Colors.grey.withOpacity(0.5),
+    )
+  )
 );

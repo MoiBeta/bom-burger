@@ -26,6 +26,12 @@ class CurrentOrderNotifier extends StateNotifier<Order?>{
     log('Item received: $item, Items: ${state?.items}');
   }
 
-  void removeItem(Item currentItem) {}
+  void removeItem(Item currentItem) {
+    if(state != null){
+      List<Item> currentList = state!.items;
+      currentList.remove(currentItem);
+      state = state!.copyWith(items: currentList);
+    }
+  }
 
 }
