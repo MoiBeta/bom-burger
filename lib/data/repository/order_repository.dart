@@ -9,11 +9,14 @@ class OrderRepository {
   final LocalStorage storage = LocalStorage('order_app.json');
 
   Future<void> createOrder(Order order) async {
-    List<Order> list;
-    list = (storage.getItem('orders') as List<Map<String, dynamic>>)
-        .map((Map<String, dynamic> map) => Order.fromJson(map))
-        .toList();
+    final List<Map<String,dynamic>> mapList = storage.getItem('orders')
+        ?? <Map<String,dynamic>>[];
+
+    final List<Order> list = mapList.map((Map<String, dynamic> map)
+    => Order.fromJson(map)).toList();
+
     list.add(order);
+
     storage.setItem(
         'orders', list.map((Order order) => order.toJson()).toList());
   }

@@ -27,5 +27,5 @@ ThemeData lightTheme = ThemeData(
       backgroundColor: const Color(0xFFFFA000),
       disabledBackgroundColor: Colors.grey.withOpacity(0.5),
     )
-  )
+  ),
 );

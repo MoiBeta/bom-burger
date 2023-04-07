@@ -20,7 +20,7 @@ final Provider<GoRouter> router = Provider<GoRouter>(
       GoRoute(
         path: resume,
         builder: (BuildContext context, GoRouterState state) {
-          return const ResumeScreen();
+          return ResumeScreen();
         },
       ),
     ],

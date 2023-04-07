@@ -55,7 +55,7 @@ class SandwichItemList extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                        '\$${currentItem.price}',
+                        '\$${currentItem.price.toStringAsFixed(2)}',
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     Text(currentItem.name),
@@ -66,7 +66,8 @@ class SandwichItemList extends ConsumerWidget {
                           child: FittedBox(
                             child: RatingBarIndicator(
                               rating: currentItem.rate,
-                              itemBuilder: (BuildContext context, _) => const Icon(
+                              itemBuilder: (BuildContext context, _) =>
+                              const Icon(
                                 Icons.star,
                                 color: Colors.amber,
                               ),
