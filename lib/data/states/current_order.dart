@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bom_hamburguer/data/enums/item_type.dart';
 import 'package:bom_hamburguer/data/models/item.dart';
 import 'package:bom_hamburguer/data/models/order.dart';
@@ -8,6 +6,7 @@ import 'package:bom_hamburguer/data/states/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 StateNotifierProvider<CurrentOrderNotifier,Order?> currentOrderProvider =
 StateNotifierProvider<CurrentOrderNotifier,Order?>(
@@ -73,7 +72,7 @@ class CurrentOrderNotifier extends StateNotifier<Order?>{
         actions: <Widget>[
           ElevatedButton(
               onPressed: ()=>context.pop(),
-              child: const Text('Got it!'),
+              child: Text(AppLocalizations.of(context).got_it),
           ),
         ],
       );

@@ -76,4 +76,13 @@ class OrderRepository {
         ],
     );
   }
+
+  List<Order> getOrders() {
+    final List<dynamic> mapList = storage.getItem('orders')
+        ?? <Map<String,dynamic>>[];
+
+    return mapList.map((map)
+    => Order.fromJson(map)).toList();
+
+  }
 }

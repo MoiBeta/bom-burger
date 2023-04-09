@@ -3,7 +3,6 @@ import 'package:bom_hamburguer/data/models/item.dart';
 import 'package:bom_hamburguer/data/models/order.dart';
 import 'package:bom_hamburguer/data/states/available_items.dart';
 import 'package:bom_hamburguer/data/states/current_order.dart';
-import 'package:bom_hamburguer/data/states/user.dart';
 import 'package:bom_hamburguer/ui/home/widgets/menu_drawer.dart';
 import 'package:bom_hamburguer/ui/home/widgets/non_sanswich_list_tile.dart';
 import 'package:bom_hamburguer/ui/home/widgets/sandwich_item_list.dart';

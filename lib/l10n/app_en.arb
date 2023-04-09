@@ -1,3 +1,18 @@
 {
-    "helloWorld": "Hello World!"
+    "language":"Language",
+    "english":"English",
+    "spanish":"Spanish",
+    "select_language":"Please, select a language",
+    "order_list": "Order list",
+    "got_it":"Got it!",
+    "place_order":"Place Order",
+    "about_place_order": "You are about to place an order!",
+    "order_processed":"Your order has been processed successfully!",
+    "no_items_selected":"You haven't selected any items yet",
+    "no_order_placed":"You haven't placed any order yet",
+    "order_resume":"Here is the resume of your order...",
+    "discounts":"Discounts",
+    "final_price":"Final price:",
+    "enter_name": "Please enter your name, so we can process your order.",
+    "number_item":"Number of items:"
 }

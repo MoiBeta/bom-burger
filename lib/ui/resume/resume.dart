@@ -5,6 +5,7 @@ import 'package:bom_hamburguer/router/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ResumeScreen extends ConsumerWidget {
   ResumeScreen({Key? key}) : super(key: key);
@@ -30,15 +31,15 @@ class ResumeScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget> [
-                    const Text(
-                      'You are about to place an order!',
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context).about_place_order,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 25,
                       ),
                     ),
                     Text(
-                      'Here is the resume of your order...',
+                      AppLocalizations.of(context).order_resume,
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: Colors.white,
                         fontStyle: FontStyle.italic,
@@ -88,7 +89,7 @@ class ResumeScreen extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text('Discounts:',
+                  Text(AppLocalizations.of(context).discounts,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   Text('-\$${currentOrder.discount.toStringAsFixed(2)}',
@@ -101,7 +102,7 @@ class ResumeScreen extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                      'Final price:',
+                    AppLocalizations.of(context).final_price,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   Text('\$${currentOrder.finalPrice.toStringAsFixed(2)}',
@@ -113,8 +114,8 @@ class ResumeScreen extends ConsumerWidget {
               const Divider(
                 color: Colors.transparent,
               ),
-              Text('Please enter your name,'
-                  ' so we can process your order.',
+              Text(
+                AppLocalizations.of(context).enter_name,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               TextFormField(
@@ -122,6 +123,8 @@ class ResumeScreen extends ConsumerWidget {
                   if(text?.isEmpty ?? true){
                     return 'You must enter name.';
                   }
+                  ref.read(currentOrderProvider.notifier).state = currentOrder
+                      .copyWith(userName: text);
                   return null;
                 },
               ),
@@ -144,12 +147,13 @@ class ResumeScreen extends ConsumerWidget {
                                   size: 100,
                                   color: Color(0xFFFFA000),
                                 ),
-                                content: const Text('Your order has been processed '
-                                    'successfully!'),
+                                content: Text(AppLocalizations.of(context)
+                                    .order_processed),
                                 actions: <Widget>[
                                   ElevatedButton(
                                     onPressed: ()=> context.go(home),
-                                    child: const Text('Got it!'),
+                                    child: Text(AppLocalizations.of(context)
+                                        .got_it),
                                   ),
                                 ],
                               );
@@ -157,7 +161,7 @@ class ResumeScreen extends ConsumerWidget {
                       }
                     }
                   },
-                  child: const Text('Place Order'),
+                  child: Text(AppLocalizations.of(context).place_order),
               )
             ],
           ),

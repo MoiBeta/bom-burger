@@ -6,6 +6,7 @@ import 'package:bom_hamburguer/ui/home/widgets/menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShoppingCartDrawer extends ConsumerWidget {
   const ShoppingCartDrawer({Key? key}) : super(key: key);
@@ -69,9 +70,9 @@ class ShoppingCartDrawer extends ConsumerWidget {
                   color: const Color(0xFFFFA000).withOpacity(0.5),
                 ),
                 Text(
-                    "You haven't selected any items yet",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
+                        AppLocalizations.of(context).no_items_selected,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
                     color: const Color(0xFFFFA000).withOpacity(0.5),
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
@@ -95,7 +96,7 @@ class ShoppingCartDrawer extends ConsumerWidget {
 
                   }
                       :null,
-                  child: const Text('Place Order'),
+                  child: Text(AppLocalizations.of(context).place_order),
               ),
           ),
         ],
